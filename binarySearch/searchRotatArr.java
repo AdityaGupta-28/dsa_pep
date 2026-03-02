@@ -6,7 +6,7 @@ public class searchRotatArr {
             int mid=l+(h-l)/2;
             if(nums[mid]==target)return mid;
 
-            else if(nums[l]<nums[mid]){
+            else if(nums[l]<=nums[mid]){
                 if(nums[l]<=target && nums[mid]>target){
                     h=mid-1; }
                 else{

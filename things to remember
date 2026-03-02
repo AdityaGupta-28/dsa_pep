@@ -1,0 +1,4 @@
+day2 - diamond, pascalTriangle-nck+1 = nck*(n-k)/(k+1);
+sorting - mergeSort, quickSort
+//pointer size is always same irrespective of data type like int, char all are of 4byte for 32bit and 8byte for 64 bit System
+//if we increase int pointer then moves by 4 bytes while char move by 1 byte

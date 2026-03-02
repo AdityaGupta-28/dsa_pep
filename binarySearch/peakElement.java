@@ -3,18 +3,16 @@ import java.util.Scanner;
 public class peakElement {
 public int peak(int[]arr){
     int l=0; int h=arr.length-1;
-     int ans=0;
-      while(l<=h){
+      while(l<h){
             int mid=l+(h-l)/2;
            
-            if(arr[mid]>ans){
-               ans=arr[mid];
+            if(arr[mid+1]>arr[mid]){
                 l=mid+1;
             }
                                       /// peak element in mountain array
-            else h=mid-1;
+            else h=mid;
         }
-        return ans;
+        return arr[l];
     }
      public void main(String[] args){
         Scanner sc= new Scanner(System.in);

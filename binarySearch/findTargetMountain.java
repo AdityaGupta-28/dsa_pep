@@ -5,19 +5,18 @@ public class findTargetMountain {
    
    public int peak(int[]arr){
     int l=1; int h=arr.length-1;
-     int ans=-1;
-      while(l<=h){
+    
+      while(l<h){
             int mid=l+(h-l)/2;          
-            if(arr[mid]>arr[mid-1]){
-               ans=mid;
+            if(arr[mid+1]>arr[mid]){
+             
                 l=mid+1;
             }
                                       /// target element in mountain array
-            else h=mid-1;
+            else h=mid;
         }
-        // return ans;
-            //or
-        return h;
+       
+        return l;
     }
      public int binaryFirst(int[]arr,int l, int h,int target){
       int ans=-1;
