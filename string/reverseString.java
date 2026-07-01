@@ -4,7 +4,14 @@ public class reverseString {
     
     public String reverseString(String s){
         StringBuilder sb = new StringBuilder(s);
-        sb.reverse();
+        int i=0; int j=s.length()-1;
+        while(i<j){
+            char temp = sb.charAt(i);
+            sb.setCharAt(i,sb.charAt(j));
+            sb.setCharAt(j, temp);
+            i++; j--;
+        }
+        // sb.reverse();
         return sb.toString();
     }
 
