@@ -1,0 +1,95 @@
+                 HashMap
+                    │
+                    ↓
+             put(key, value)
+                    │
+                    ↓
+              key.hashCode()
+                    │
+                    ↓
+              Hash Spreading
+             h ^ (h >>> 16)
+                    │
+                    ↓
+          Calculate Bucket Index
+             (n - 1) & hash
+                    │
+                    ↓
+               table[index]
+                    │
+             ┌──────┴──────┐
+             ↓             ↓
+          Empty         Occupied
+             ↓             ↓
+           Insert       Collision
+                           │
+                    ┌──────┴──────┐
+                    ↓             ↓
+               Key matches    Key differs
+                    ↓             ↓
+               Replace       Add node
+                              │
+                              ↓
+                     Bucket ≥ 8 nodes?
+                         /        \
+                       No          Yes
+                       ↓            ↓
+                    Linked      capacity ≥ 64?
+                                  /      \
+                                No        Yes
+                                ↓          ↓
+                              Resize    Treeify
+                                         ↓
+                                   Red-Black Tree
+
+
+
+HashMap — Quick Summary
+HashMap
+   │
+   ├── Capacity
+   │      ↓
+   │   Number of buckets
+   │   Default = 16
+   │
+   ├── Load Factor
+   │      ↓
+   │   Default = 0.75
+   │
+   ├── Resize Threshold
+   │      ↓
+   │   capacity × load factor
+   │   16 × 0.75 = 12
+   │      ↓
+   │   size > 12 → resize
+   │      ↓
+   │   capacity doubles → 32
+   │
+   └── Treeification
+          ↓
+      Bucket has ~8 nodes
+          ↓
+      Check capacity
+       /          \
+    < 64          ≥ 64
+      ↓             ↓
+   Resize         Treeify
+                  ↓
+             Red-Black Tree
+Important constants
+Concept	Default value
+Initial Capacity	16
+Load Factor	0.75
+Resize Threshold	capacity × 0.75
+Treeify Threshold	8 nodes/bucket
+Minimum Treeify Capacity	64
+Untreeify Threshold	6 nodes
+⭐ Interview points
+Capacity → number of buckets.
+Load factor → determines when resizing should happen.
+Threshold → capacity × load factor.
+Resize → usually doubles capacity.
+Treeification → happens when a bucket becomes sufficiently crowded (~8 nodes) and capacity ≥ 64.
+If bucket reaches ~8 nodes but capacity < 64, HashMap prefers resizing instead of treeifying.
+Treeification changes the bucket from a linked list → Red-Black Tree.
+Tree can later convert back to a linked list when it becomes small enough (~6 nodes).
